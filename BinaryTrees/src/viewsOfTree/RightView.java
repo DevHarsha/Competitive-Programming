@@ -1,10 +1,12 @@
 package viewsOfTree;
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
 import node.object.Node;
 
-public class LeftView {
-
-	public static void main(String[] args) {
+public class RightView {
+public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
@@ -36,7 +38,7 @@ public class LeftView {
                 n--;
             }
             Tree g = new Tree();
-			g.leftView(root);
+			g.rightView(root);
 			System.out.println();
          t--;	
         }
@@ -44,48 +46,4 @@ public class LeftView {
 
 	}
 
-}
-class Tree{
-
-	static int max_level=0;
-    
-    void leftView(Node root) {
-		leftViewUtil(root,1);
-		max_level=0;
-	}
-    
-	public void leftViewUtil(Node root, int level) {
-		
-		if(root==null)
-			return;
-		if(level>max_level) {
-			System.out.print(root.data+" ");
-			max_level = level;
-			
-		}
-		leftViewUtil(root.left,level+1);
-		leftViewUtil(root.right,level+1);
-		
-	}
-
-	public void rightView(Node root) {
-		
-		rightViewUtil(root,1);
-		max_level = 0;
-	}
-
-	private void rightViewUtil(Node root, int level) {
-		
-		if(root==null) {
-			return;
-		}
-		if(max_level<level) {
-			System.out.print(root.data+" ");
-			max_level = level;
-		}
-		rightViewUtil(root.right,level+1);
-		rightViewUtil(root.left,level+1);
-		
-	}
-	
 }
