@@ -1,12 +1,16 @@
 package viewsOfTree;
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
 import node.object.Node;
 
-public class LeftView {
-
-	public static void main(String[] args) {
+public class BottomView {
+	public static void main(String args[])
+    {
 		
-	Scanner sc = new Scanner(System.in);
+        // Input the number of test cases you want to run
+        Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
 		//Node root=null;
         while (t > 0)
@@ -19,6 +23,7 @@ public class LeftView {
                 int n1 = sc.nextInt();
                 int n2 = sc.nextInt();
                 char lr = sc.next().charAt(0);
+                //  cout << n1 << " " << n2 << " " << (char)lr << endl;
                 Node parent = m.get(n1);
                 if (parent == null)
                 {
@@ -35,13 +40,13 @@ public class LeftView {
                 m.put(n2, child);
                 n--;
             }
-            Tree g = new Tree();
-			g.leftView(root);
-			System.out.println();
-         t--;	
-        }
 		
-
-	}
-
+            
+            Tree g = new Tree();           
+            
+			g.bottomView(root);			
+			System.out.println();
+         t--;			
+        }
+    }
 }
