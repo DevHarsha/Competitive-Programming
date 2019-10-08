@@ -6,7 +6,7 @@ public class LeftView {
 
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
+	Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
 		//Node root=null;
         while (t > 0)
@@ -53,7 +53,7 @@ class Tree{
 		leftViewUtil(root,1);
 		max_level=0;
 	}
-    
+    	//left view
 	public void leftViewUtil(Node root, int level) {
 		
 		if(root==null)
