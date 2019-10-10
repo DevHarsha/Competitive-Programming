@@ -7,3 +7,8 @@ Finally is used to place important code, it will be executed whether exception i
 
 FINALIZE:
 Finalize is used to perform clean up processing just before object is garbage collected.
+
+ArrayList: 
+Not synchronized, So in-order to use them in the multi-threading environment, it needs to be first synchronised.
+Allows null values and duplicates
+Maintains the insertion order
