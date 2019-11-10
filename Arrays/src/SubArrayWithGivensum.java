@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+/*Given an unsorted array A of size N of non-negative integers, find a continuous sub-array which adds to a given number S. */
+
 public class SubArrayWithGivensum {
 	public static void main(String args[]) {
 		
@@ -12,29 +14,31 @@ public class SubArrayWithGivensum {
 			for(int j=0;j<size;j++) {
 				arr[j] = sc.nextInt();
 			}
-			getIndexesSimpler(arr,size,sum); // O(n^2)
+			//getIndexesSimpler(arr,size,sum); // O(n^2)
 			getIndexesEfficient(arr,size,sum);
 		}
 	}
 
 	private static void getIndexesEfficient(int[] arr, int size, int sum) {
 		
-		int curSum = arr[0];
+		int curSum = 0;//arr[0];
 		int start = 0;
 		boolean flag = false;
-		for(int i=1;i<=size;i++) {
+		
+		for(int i=0;i<size;i++) {
 			
-			while(curSum>sum && start < i-1) {
+			curSum = curSum+arr[i];
+			
+			while(curSum>sum && start < i) {
 				curSum = curSum-arr[start];
 				start++;
 			}
 			if(curSum==sum) {
-				System.out.println(start+" "+(i-1));
+				System.out.println((start+1)+" "+(i+1));
 				flag =true;
+				break;
 			}
-			if(i<size) {
-				curSum = curSum+arr[i];
-			}
+			
 		}
 		
 		if(!flag) {
