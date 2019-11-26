@@ -35,6 +35,7 @@ public class JumpingNumbers {
 		}
 		
 	}
+	
 
 	public static void getJumpingNumbersUtil(int num, int i,ArrayList<Integer> list) {
 		
