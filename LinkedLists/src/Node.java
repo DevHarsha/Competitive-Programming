@@ -7,4 +7,8 @@ public class Node {
 		data = item;
 		next = null;
 	}
+
+	public Node() {
+		next = null;
+	}
 }
