@@ -40,7 +40,7 @@ public class NumberOfIslands {
         }
 
 	}
-	static int R = 0,C = 0;
+	static int R = 0,C = 0, islands = 0;
 	static int island_size = Integer.MIN_VALUE;
 	
 	public static int findIslands(ArrayList<ArrayList<Integer>> list, int n, int m) {
@@ -61,11 +61,12 @@ public class NumberOfIslands {
 		for(int i=0;i<R;i++) {
 			
 			for(int j=0;j<C;j++) {
-				int size = 1;
+				
 				if(visited.get(i).get(j)==false && list.get(i).get(j)==1) {
 					result++;
-					dfsSearch(list,i,j,visited,size);
-					
+					islands = 1;
+					dfsSearch(list,i,j,visited);
+					island_size = Math.max(island_size, islands);
 				}
 				
 			}
@@ -76,7 +77,7 @@ public class NumberOfIslands {
 	}
 	
 	public static void dfsSearch(ArrayList<ArrayList<Integer>> list, int i, int j,
-			ArrayList<ArrayList<Boolean>> visited,int size) {		
+			ArrayList<ArrayList<Boolean>> visited) {		
 		
 		
 		visited.get(i).set(j, true);
@@ -87,15 +88,13 @@ public class NumberOfIslands {
 		for(int r=0;r<8;r++) {
 			
 			if(isValidCoordinate(list, i+rows[r], j+cols[r], visited)) {
-				
-				dfsSearch(list,i+rows[r],j+cols[r],visited,size+1);
+				islands++;
+				dfsSearch(list,i+rows[r],j+cols[r],visited);
 				
 			}
 			
 		}
-		if(island_size<size) {
-			island_size = size;
-		}
+		
 		
 	}
 	public static boolean isValidCoordinate(ArrayList<ArrayList<Integer>> list,int row,int col,ArrayList<ArrayList<Boolean>> visited) {

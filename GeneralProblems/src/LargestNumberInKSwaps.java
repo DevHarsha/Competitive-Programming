@@ -37,7 +37,7 @@ public class LargestNumberInKSwaps {
 			for(int j=i+1;j<n;j++) {
 				
 				if(number[i]<number[j]){
-	                 char temp = number[i];
+	                 char temp = number[i];  //swap digits and check, if swapped number is greater then update
 	                 number[i] = number[j];
 	                 number[j] = temp;
 	                 String newVal = String.valueOf(number);
@@ -47,7 +47,7 @@ public class LargestNumberInKSwaps {
 	                 }
 	                 
 	                 getLargestNumber(number, k-1);
-	                 temp = number[i];
+	                 temp = number[i];       // swap back the digits, to normal number
 	                 number[i] = number[j];
 	                 number[j] = temp;
 	             }			

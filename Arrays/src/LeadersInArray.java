@@ -15,11 +15,32 @@ public class LeadersInArray {
 			for(int j=0;j<size;j++) {
 				arr[j] = sc.nextInt();
 			}
-			getLeaders(arr,size);
-			
+			//getLeaders(arr,size); TIME LIMIT EXCEEDED
+			getLeadersPractice(arr,Integer.MIN_VALUE,size-1);
+			System.out.println();
 		}
 		
 	}
+	
+
+	public static void getLeadersPractice(int[] arr,int right_max, int i) {
+		
+		boolean isMaxFound = false;
+		if(i<0) {	
+			return;
+		}
+		
+		if(right_max<=arr[i]) {
+			right_max = arr[i];
+			isMaxFound = true;
+		}
+		getLeadersPractice(arr, right_max, i-1);
+		
+		if(isMaxFound)
+			System.out.print(right_max+" ");
+		
+	}
+
 
 	public static void getLeaders(int[] a, int n) {
 		

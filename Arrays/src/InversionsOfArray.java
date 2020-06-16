@@ -17,56 +17,59 @@ public class InversionsOfArray {
 		
 	}
 
-	private static int getInversionsCount(int[] arr, int l, int r) {
+	public static int getInversionsCount(int[] arr, int i, int j) {
 		
 		int count = 0;
 		
-		if(l<r) {
-			int mid = (l+r)/2;
-			count += getInversionsCount(arr,l,mid);
-			count += getInversionsCount(arr, mid+1, r);
+		if(i<j) {
 			
-			count += getMergeCount(arr,l,mid,r);
+			int mid = (i+j)/2;
+			count = count+getInversionsCount(arr,i,mid);
+			count = count+getInversionsCount(arr,mid+1,j);
+					
+			count = count + getMergeInvCount(arr,i,mid,j);
 		}
-		
 		return count;
 	}
 
-	private static int getMergeCount(int[] arr, int l, int mid, int r) {
+	public static int getMergeInvCount(int[] arr, int l, int mid, int r) {
 		
-		int n1 = (mid-l)+1;
+		int n1 = mid+1-l;
 		int n2 = r-mid;
-		
-		int result = 0;
 		
 		int L[] = new int[n1];
 		int R[] = new int[n2];
 		
-		for(int p=0;p<n1;p++) {
-			L[p] = arr[p+l];
+		for(int i=0;i<n1;i++) {
+			L[i] = arr[l+i];
 		}
-		for(int p=0;p<n2;p++) {
-			R[p] = arr[mid+p+1];
+		for(int j=0;j<n2;j++) {
+			R[j] = arr[mid+j+1];
 		}
 		
 		int i=0,j=0,k=l;
+		int inversions = 0;
 		
 		while(i<n1 && j<n2) {
 			
 			if(L[i]<=R[j]) {
 				arr[k++] = L[i++];
-			}else {
+			}
+			
+			else{
 				arr[k++] = R[j++];
-				result += (mid+1)-(l+i);
-			}			
+				inversions += ((mid+1)-(l+i));  // No of elements including L[i] element which is bigger than R[j]
+			}
 		}
-		while (i < n1) 
-            arr[k++] = L[i++]; 
-  
-        while (j < n2) 
-            arr[k++] = R[j++];
 		
-		return result;
+		while(i<n1) {
+			arr[k++] = L[i++];
+		}
+		while(j<n2) {
+			arr[k++] = R[j++];
+		}
+		return inversions;
 	}
 
+	
 }

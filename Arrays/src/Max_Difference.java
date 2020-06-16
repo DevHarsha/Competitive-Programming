@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+/* A[j]-A[i] has to be maximum where i<j */
 public class Max_Difference {
 
 	public static void main(String[] args) {
@@ -16,16 +16,16 @@ public class Max_Difference {
 		}
 
 	}
-
+    /* traverse from left to right, keep track of Min so far.. if min_sofar - current_ele is greater update max_diff */
 	public static void getMaxDiff(int[] a, int n) {
 		
-		int min_ele = a[0];
+		int min_ele = a[0]; // Minimum element so far from left
 		int max_diff = Integer.MIN_VALUE;
 		
 		for(int i=1;i<n;i++) {
 			
-			max_diff = Math.max(max_diff, a[i]-min_ele);
-			min_ele = Math.min(min_ele, a[i]);
+			max_diff = Math.max(max_diff, a[i]-min_ele); //update max_diff with a[i]-min_ele
+			min_ele = Math.min(min_ele, a[i]); // update minimum element so far
 			
 		}
 		if(max_diff==0)

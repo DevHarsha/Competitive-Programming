@@ -6,6 +6,7 @@ import java.util.HashSet;
 /*Given a dictionary, a method to do lookup in dictionary and a M x N board where every cell has one character.
  * Find all possible words that can be formed by a sequence of adjacent characters*/
 
+
 //-------------------------------------------------------------------/*Approach*/-----------------------------------------------------------------\\
 
 /*The idea is to consider every character as a starting character and find all words starting with it. All words starting from a character can be found using Depth First Traversal.
@@ -88,7 +89,7 @@ public class WordBoggle {
 			
 		}
 		
-		str = str.substring(str.length()-1);
+		//str = str.substring(str.length()-1);  this line is not necessary however in solution it is there
 		visited[i][j] = false;
 		
 	}

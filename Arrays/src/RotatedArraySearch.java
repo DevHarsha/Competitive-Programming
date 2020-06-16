@@ -14,18 +14,59 @@ public class RotatedArraySearch {
 			}
 			int key = sc.nextInt();
 			getIndex(arr,size,key);
+			
 		}
 
 	}
 
+	
+
+
+
 	public static void getIndex(int[] arr, int size, int key) {
 		
-		int pivot = getPivot(arr,0,size-1);
+		int pivot = getPivot(arr,0,size-1); // Using quicksort concept
 		//System.out.println(pivot);
 		
-		int index = getIndexUtil(arr,0,size-1,key);
+		int index = getIndexUtil(arr,0,size-1,key); //First time
 		System.out.println(index);
+		
+		int answer = getIndexPracticeUtil(arr,0,size-1,key); // Practice method
+		System.out.println(answer);
+		
+		
+		
 	}
+	
+	
+	public static int getIndexPracticeUtil(int[] arr, int start, int end, int key) {
+		
+		int mid = (start+end)/2;
+		
+		if(end<start) {
+			return -1;
+		}
+		if(arr[mid]==key) {
+			return mid;
+		}
+		
+		if(arr[start]<=arr[mid] ) {
+			
+			if(key<arr[mid] && key>=arr[start])
+				return getIndexPracticeUtil(arr, start,mid, key);
+			else
+				return getIndexPracticeUtil(arr, mid+1, end, key);
+		}
+		
+		if(key>arr[mid] && key<=arr[end]) {
+			return getIndexPracticeUtil(arr, mid+1, end, key);
+		}
+		else {
+			return getIndexPracticeUtil(arr, start, mid-1, key);
+		}
+		
+	}
+	
 
 	public static int getIndexUtil(int[] arr, int st, int end, int key) {
 		

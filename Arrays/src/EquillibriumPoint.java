@@ -23,7 +23,31 @@ public class EquillibriumPoint {
 
 	private static int getAnswer(int[] arr, int n) {
 		
-		int start = 0;
+		int i=0,j=n-1;
+		int left_sum = 0, right_sum = 0;
+		
+		while(i<j) {
+			
+			if(left_sum<right_sum) {
+				left_sum += arr[i++];
+			}
+			else {
+				right_sum += arr[j--];
+			}
+			
+		}
+		if(left_sum==right_sum) {
+			return i+1;
+		}
+		
+		return -1;
+		
+	}
+
+}
+
+/*
+ * int start = 0;
 		int end = n-1;
 		
 		int left_sum = 0;
@@ -43,6 +67,6 @@ public class EquillibriumPoint {
 		}
 		
 		return -1;
-	}
-
-}
+ * 
+ * 
+ */

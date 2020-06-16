@@ -17,8 +17,34 @@ public class ChocolateDistribution {
 			}
 			int students = sc.nextInt();
 			System.out.println(getMinDiff(array,size,students));
+			System.out.println(getMinDiff_practice(array,size,students));
+			
 		}
 
+	}
+
+	private static int getMinDiff_practice(int[] array, int size, int students) {
+		
+		Arrays.sort(array);
+		int j = 0;
+		int min_val = Integer.MAX_VALUE;
+		
+		if(students==0 || size==0) {
+			return 0;
+		}
+		if(students>size) {
+			return -1;
+		}
+		for(int i=0;i<=size-students;i++) {
+			
+			j = i+students-1;
+			if( (array[j]-array[i]) < min_val) {
+				min_val = array[j]-array[i];
+			}
+			
+		}
+		
+		return min_val;
 	}
 
 	public static int getMinDiff(int[] array, int size, int students) {
