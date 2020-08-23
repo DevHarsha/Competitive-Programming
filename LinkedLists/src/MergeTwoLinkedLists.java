@@ -40,9 +40,18 @@ public class MergeTwoLinkedLists {
 					 int b = sc.nextInt(); 
 					llist2.addToTheLast(new Node(b));
 				}
-				llist1.head= new LinkedList().sortedMerge(llist1.head,llist2.head);
-				llist1.printList();
+				//Normal method using ITERATION
+				//llist1.head= new LinkedList().sortedMerge(llist1.head,llist2.head);
+				
+				//MERGING SOLUTION (INCREASING ORDER)
+				//llist1.head = new LinkedList().mergeSolution(llist1.head, llist2.head);
+				//llist1.printList();
 			
+				//MERGING SOLUTION (REVERSE ORDER I.E DECREASING GIVEN INCREASING ORDER OF LINKED LISTS)
+			
+				llist1.head = new LinkedList().mergeSortRev(llist1.head, llist2.head);
+				llist1.printList();
+			 
 			t--;
 			
         }
@@ -77,7 +86,7 @@ public class MergeTwoLinkedLists {
 }
 
 class LinkedList{
-
+  
 	public Node sortedMerge(Node headA, Node headB) {
 		
 		if(headA==null) {
@@ -125,5 +134,87 @@ class LinkedList{
 		
 		return head;
 	}
+
+	public Node mergeSortRev(Node head1, Node head2) {
+		
+		if(head1==null) {
+			return head2;
+		}
+		if(head2==null) {
+			return head1;
+		}
+		
+		if(head1.data<=head2.data) {
+			
+			Node temp = mergeSortRev(head1.next, head2);
+			temp.next = head1;
+			head1 = temp;
+			return head1;
+			
+		}
+		else {
+						
+			Node temp = mergeSortRev(head1, head2.next);	
+			temp.next = head2;
+			head2 = temp;	
+			return head2;
+			
+		}
+		
+	}
+
+	public Node reverse(Node node) {
+		
+		Node prev = null; 
+        Node current = node; 
+        Node next = null; 
+        while (current != null) { 
+            next = current.next; 
+            current.next = prev; 
+            prev = current; 
+            current = next; 
+        } 
+        node = prev; 
+        return node;
+		
+	}
+
+	public Node mergeSolution(Node head, Node head2) {
+		
+		if(head==null) {
+			return head2;
+		}
+		if(head2==null) {
+			return head;
+		}
+		
+		if(head.data<=head2.data) {
+			
+			head.next = mergeSolution(head.next, head2);
+			return head;
+			
+		}
+		else {
+			
+			head2.next = mergeSolution(head, head2.next);
+			return head2;
+			
+		}
+				
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

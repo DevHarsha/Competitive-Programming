@@ -23,7 +23,7 @@ public class BottomView {
                 int n1 = sc.nextInt();
                 int n2 = sc.nextInt();
                 char lr = sc.next().charAt(0);
-                //  cout << n1 << " " << n2 << " " << (char)lr << endl;
+                
                 Node parent = m.get(n1);
                 if (parent == null)
                 {
@@ -39,6 +39,7 @@ public class BottomView {
                     parent.right = child;
                 m.put(n2, child);
                 n--;
+                
             }
 		
             

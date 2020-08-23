@@ -18,7 +18,10 @@ public class Permutations_of_string {
 	   	 sc.nextLine();
 	   	 for(int t=0;t<T;t++){
 	   	     String input = sc.nextLine();
-	   	     getPermutations(input,0,input.length()-1);
+	   	     
+	   	     //getPermutations(input,0,input.length()-1);
+	   	     getPermutationsPractice(input,0,input.length()-1);
+	   	     
 	   	     Collections.sort(list);
 	   	     for(String entry : list) {
 	   	    	 System.out.print(entry+" ");
@@ -27,6 +30,23 @@ public class Permutations_of_string {
 	   	     System.out.println();
 	   	 }
 
+	}
+
+	public static void getPermutationsPractice(String input, int st, int end) { //Practice method
+		
+		if(st<end) {
+			return;
+		}
+		if(st==end) {
+			list.add(input);
+		}
+		
+		for(int i=st;i<=end;i++) {
+			input = swap(input,st,i);
+			getPermutations(input, st+1, end);
+			input = swap(input,st,i);
+		}
+		
 	}
 
 	private static void getPermutations(String in,int st,int end) {

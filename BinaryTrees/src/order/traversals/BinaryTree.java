@@ -7,23 +7,9 @@ public class BinaryTree {
 	
 	
 	
-	/*
-	 * static Map<Integer,Vector<Integer>> map = new
-	 * TreeMap<Integer,Vector<Integer>>();
-	 * 
-	 * public static void printTree(Node node,int hd){ if(node==null){ return; }
-	 * Vector<Integer> temp = map.get(hd); if(temp==null){ temp = new
-	 * Vector<Integer>(); temp.add(node.data); }else{ temp.add(node.data); }
-	 * map.put(hd,temp); printTree(node.left,hd-1); printTree(node.right,hd+1); }
-	 * static void verticalOrder(Node root) { printTree(root,0);
-	 * for(Map.Entry<Integer,Vector<Integer>> entry : map.entrySet()) { Integer key
-	 * = entry.getKey(); Vector<Integer> value = entry.getValue();
-	 * //System.out.println(value); for(int i=0;i<value.size();i++){
-	 * System.out.print(value.get(i)+" "); } } map.clear(); }
-	 */	
 	
 	
-static Map<Integer,Vector<Integer>> map = new TreeMap<Integer,Vector<Integer>>();
+	static Map<Integer,Vector<Integer>> map = new TreeMap<Integer,Vector<Integer>>();
     Queue<Node> queue = new LinkedList<>();
     
     public  void printTree(Node node,int hd){
@@ -72,31 +58,6 @@ static Map<Integer,Vector<Integer>> map = new TreeMap<Integer,Vector<Integer>>()
     }
 	
 	
-	/*
-	 * static Map<Integer,Vector<Integer>> map = new
-	 * TreeMap<Integer,Vector<Integer>>();
-	 * 
-	 * static void verticalOrder(Node root) {
-	 * 
-	 * verticalOrderUtil(root,0);
-	 * 
-	 * for(Map.Entry<Integer, Vector<Integer>> entry : map.entrySet()) { Integer key
-	 * = entry.getKey(); Vector<Integer> value = entry.getValue(); for(int
-	 * i=0;i<value.size();i++){ System.out.print(value.get(i)+" "); }
-	 * 
-	 * } map.clear(); }
-	 * 
-	 * static void verticalOrderUtil(Node root, int hd) {
-	 * 
-	 * if(root==null) { return; } Vector<Integer> llist = map.get(hd);
-	 * 
-	 * if(llist==null) { llist = new Vector<Integer>(); llist.add(root.data); }else
-	 * { llist.add(root.data); }
-	 * 
-	 * map.put(hd, llist); verticalOrderUtil(root.left, hd-1);
-	 * verticalOrderUtil(root.right, hd+1);
-	 * 
-	 * }
-	 */
+	
 
 }

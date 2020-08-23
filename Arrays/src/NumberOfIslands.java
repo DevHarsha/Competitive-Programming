@@ -52,9 +52,17 @@ public class NumberOfIslands {
 		
 		  ArrayList<ArrayList<Boolean>> visited = new ArrayList<ArrayList<Boolean>>();
 		  
-		  for(int i=0;i<R;i++) { ArrayList<Boolean> temp = new ArrayList<>();
+		  for(int i=0;i<R;i++) {
+			  
+			  ArrayList<Boolean> temp = new ArrayList<>();
 		  
-		  for(int j=0;j<C;j++) { temp.add(false); } visited.add(temp); }	 
+			  for(int j=0;j<C;j++) { 
+				  
+				  temp.add(false); 
+			  }
+			  
+			  visited.add(temp);
+		  }	 
 		
 		
 		

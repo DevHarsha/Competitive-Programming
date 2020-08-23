@@ -50,26 +50,37 @@ public class Tree {
 	
 	  public void bottomView(Node root) {
 	  
-	  if(root==null) { return; }
+		  if(root==null) { return; }
+		  
+		  Queue<QueueObj> queue = new LinkedList<>(); 
+		  TreeMap<Integer,QueueObj> map = new TreeMap<>(); int hd = 0;
+		  
+		  queue.add(new QueueObj(root,hd));
 	  
-	  Queue<QueueObj> queue = new LinkedList<>(); TreeMap<Integer,QueueObj> map =
-	  new TreeMap<>(); int hd = 0;
+		  while(queue.size()!=0) {
+		  
+			  QueueObj q = queue.poll(); hd = q.hd;
+		  
+			  map.put(hd,q);
+		  
+			  if(q.node.left!=null) { 
+				  
+				  queue.add(new QueueObj(q.node.left, hd-1));
+				  
+			  }
+			  if(q.node.right!=null) { 
+				  
+				  queue.add(new QueueObj(q.node.right, hd+1));
+				  
+			  }
+			  
+		  }	  
 	  
-	  queue.add(new QueueObj(root,hd));
-	  
-	  while(queue.size()!=0) {
-	  
-	  QueueObj q = queue.poll(); hd = q.hd;
-	  
-	  map.put(hd,q);
-	  
-	  if(q.node.left!=null) { queue.add(new QueueObj(q.node.left, hd-1)); }
-	  if(q.node.right!=null) { queue.add(new QueueObj(q.node.right, hd+1)); }
-	  
-	  }	  
-	  
-	  for(Entry<Integer, QueueObj> entry : map.entrySet()) {
-	  System.out.print(entry.getValue().node.data+" "); }
+		  for(Entry<Integer, QueueObj> entry : map.entrySet()) {
+			  
+			  System.out.print(entry.getValue().node.data+" ");
+			  
+		  }
 	  
 	  }	 
 	  
